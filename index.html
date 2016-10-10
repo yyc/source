@@ -25,18 +25,19 @@
        For demo purposes, we make firepad fill the entire browser. */
     #firepad-container {
       width: 100%;
-      height: 95%;
+      height:100%;
+      overflow-y: scroll;
     }
     #header{
-      height: 5%;
+      height: 20px;
     }
   </style>
 </head>
 
 <body onload="init()">
   <div id = "header">
-    <a id = 'runAll'>Run All</a>
-    <a id = 'runSelection'> Run Selection </a>
+    <button id = 'runAll'>Run All</button>
+    <button id = 'runSelection'> Run Selection </button>
   </div>
   <div id="firepad-container"></div>
 
@@ -62,7 +63,7 @@
 
       //// Create Firepad.
       var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
-        defaultText: '// JavaScript Editing with Firepad!\nfunction go() {\n  var message = "Hello, world.";\n  console.log(message);\n}'
+        defaultText: '//This is a collaborative Source editor! All your Source functions (up to Source Week 8) are available here! \n//To see the results of execution, you\'ll need to open your browser\'s developer console.\ndisplay(head(tail(3,4)));'
       });
       $("#runAll").click(function(){
         runSource(codeMirror.getValue());
@@ -89,13 +90,7 @@
     }
 
     function runSource(source){
-      console.log(source);
       eval(source);
-      // var parser = JediRuntime.Parser(8)
-      // var ast = parser.parse(source);
-      // var instructions = JediRuntime.Compiler.compile(ast).instructions;
-      // var result = new JediRuntime.Runtime().execute_instruction(instructions);
-      // alert(result);
     }
 
   </script>
